@@ -72,4 +72,37 @@ Y el resultado obtenido es el siguiente:
 10006  ls
 ```
 
+Agregamos un título al archivo desde la shell con el comando:
+```
+echo "# Práctica 3 (Uso de redireccionamientos y comando básicos)" >> practica3.md
+```
 
+Agregamos el path actual con el comando:
+```
+pwd >> practica3.md
+```
+
+Agregamos las últimas lineas del historial con los comando que utilizamos para hacer commit y push al repositorio:
+```
+history -15 >> practica3.md
+```
+
+Y el resultado es el siguiente:
+
+```
+10007  history -60 > practica3.md
+10008  vim practica3.md
+10009  pwd >> practica3.md
+10010  vim practica3.md
+10011  echo # Práctica 3 (Uso de redireccionamientos y comando básicos) >> practica3.md
+10012  echo "# Práctica 3 (Uso de redireccionamientos y comando básicos)" >> practica3.md
+10013  vim practica3.md
+10014  git status
+10015  vim practica3.md
+10016  git status
+10017  git add practica3.md
+10018  git commit -m "Notas de redireccionamiento y comando básicos"
+10019  git push
+10020  history -10 >> practica3.md
+10021  vim practica3.md
+```
