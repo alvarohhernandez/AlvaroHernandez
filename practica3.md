@@ -106,3 +106,17 @@ Y el resultado es el siguiente:
 10020  history -10 >> practica3.md
 10021  vim practica3.md
 ```
+
+## Comando de configuración de Git
+
+```
+  670  git config merge.renamelimit 4000
+ 2621  git config diff.renames 0
+ 3154  git config --global user.email "alvaro.hernandez@dit.mx"
+ 3155  git config --global user.name "Alvaro Hernández"
+ 8367  git config --global user.name "Alvaro"\ngit config --global user.email "a_90_hernandez@hotmail.com"
+ 9689  git config user.signingkey 137D6B6EEFDB2D37
+ 9690  git config commit.gpgsign true
+ 9715  git config user.email "draco_90@ciencias.unam.mx"
+10028  history | grep "git config"
+```
