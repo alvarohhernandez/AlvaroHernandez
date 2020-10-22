@@ -36,7 +36,7 @@ else
   FILE=${RESULTS[${OPTION}]}
   echo Se esta procesando el archivo: ${FILE}
 
-  sort $FILE | uniq -d | tee $DESTINO
+  sort $FILE | uniq | tee $DESTINO
 
   echo -e "El resultado fue:\n"
   cat $DESTINO
