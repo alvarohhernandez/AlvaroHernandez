@@ -19,7 +19,7 @@ public class Function {
      * @param numero : es el valor en base 10 para convertir a binario
      * @return una cadena de 0s y 1s que corresponden a la representación binaria
      */
-    public String convierteBinario(int numero) {
+    public String convierteEnteroBinario(int numero) {
         int numeroAuxiliar;
         boolean esResiduoCero;
         String signo;
@@ -47,12 +47,38 @@ public class Function {
         return binario;
     }
 
+    /**
+     * Esta función devuelve la representación binaria de un número real en base 10
+     * @param numero : es el valor real en base 10 para convertir a binario
+     * @return una cadena de 0s y 1s que corresponden a la representación binaria
+     */
+    public String convierteRealBinario(double numero) {
+        double numeroAuxiliar;
+        int parteEntera;
+        double parteDecimal;
+        String binario;
+
+        parteDecimal = numero % 1;
+        parteEntera = (int) numero;
+        binario = this.convierteEnteroBinario(parteEntera) + ".";
+
+        while (parteDecimal != 0) {
+            numeroAuxiliar = parteDecimal * 2;
+            parteDecimal = numeroAuxiliar % 1;
+            parteEntera = (int) numeroAuxiliar;
+            binario += parteEntera;
+        }
+
+        return binario;
+    }
+
     public static void main(String[] args) {
       Function f = new Function();
       System.out.println(f.esPar(5));
       System.out.println(f.esPar(4));
       System.out.println(f.esImpar(5));
       System.out.println(f.esImpar(4));
-      System.out.println("La representación binaria de 45 es "+f.convierteBinario(45));
+      System.out.println("La representación binaria de 45 es "+f.convierteEnteroBinario(45));
+      System.out.println("La representación binaria de 4.5 es "+f.convierteRealBinario(4.5));
     }
 }
