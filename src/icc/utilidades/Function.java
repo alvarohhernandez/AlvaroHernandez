@@ -66,6 +66,8 @@ public class Function {
             numeroAuxiliar = parteDecimal * 2;
             parteDecimal = numeroAuxiliar % 1;
             parteEntera = (int) numeroAuxiliar;
+            System.out.println("ParteEntera" + parteEntera);
+            System.out.println("ParteDecimal" + parteDecimal);
             binario += parteEntera;
         }
 
@@ -79,6 +81,6 @@ public class Function {
       System.out.println(f.esImpar(5));
       System.out.println(f.esImpar(4));
       System.out.println("La representación binaria de 45 es "+f.convierteEnteroBinario(45));
-      System.out.println("La representación binaria de 4.5 es "+f.convierteRealBinario(4.5));
+      System.out.println("La representación binaria de 4.6 es "+f.convierteRealBinario(4.6));
     }
 }
