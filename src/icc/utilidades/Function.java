@@ -81,6 +81,6 @@ public class Function {
       System.out.println(f.esImpar(5));
       System.out.println(f.esImpar(4));
       System.out.println("La representación binaria de 45 es "+f.convierteEnteroBinario(45));
-      System.out.println("La representación binaria de 4.6 es "+f.convierteRealBinario(4.6));
+      System.out.println("La representación binaria de 4.2 es "+f.convierteRealBinario(4.2));
     }
 }
