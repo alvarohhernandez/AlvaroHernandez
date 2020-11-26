@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class Carrito {
     private double total;
-    private ArrayList<Articulo> articulos;
+    private ArrayList<String> articulos;
 
     /*
      * Constructor de la clase Carrito
