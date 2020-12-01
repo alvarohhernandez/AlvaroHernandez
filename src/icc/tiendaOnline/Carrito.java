@@ -9,14 +9,14 @@ import java.util.ArrayList;
  */
 public class Carrito {
     private double total;
-    private ArrayList<String> articulos;
+    private ArrayList<Articulo> articulos;
 
     /*
      * Constructor de la clase Carrito
      */
     public Carrito() {
         total = 0;
-        articulos = new ArrayList<String>();
+        articulos = new ArrayList<Articulo>();
     }
 
     /*
@@ -26,4 +26,12 @@ public class Carrito {
     public double getTotal() {
         return total;
     }
+
+    /*
+     * Método para agregar un artículo al carrito
+     */
+    public void addArticulo(Articulo articulo) {
+        this.articulos.add(articulo);
+    }
+    
 }

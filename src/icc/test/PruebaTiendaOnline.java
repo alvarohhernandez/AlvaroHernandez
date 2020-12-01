@@ -30,6 +30,8 @@ public class PruebaTiendaOnline {
 
         sudadera = new Articulo("Sudadera Adidas", 300, "305307451", "Sudadera azul marca adidas");
 
+        carrito.addArticulo(sudadera);
+
         System.out.println("El nombre es " + nombre);
         System.out.println("El apellido paterno es " + paterno);
         System.out.println("El apellido materno es " + materno);
