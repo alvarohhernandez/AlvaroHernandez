@@ -7,17 +7,21 @@ package icc.tiendaOnline;
 public class Articulo {
     String nombre;
     float precio;
-    String codigoBarras;
+    int codigoBarras;
     String descripcion;
 
     /*
      * Constructor de la clase Articulo
      */
-    public Articulo(String nombre, float precio, String codigoBarras, String descripcion) {
+    public Articulo(String nombre, float precio, int codigoBarras, String descripcion) {
         this.nombre = nombre;
         this.precio = precio;
         this.codigoBarras = codigoBarras;
         this.descripcion = descripcion;
+    }
+
+    public int getCodigoBarras() {
+        return this.codigoBarras;
     }
 
     @Override

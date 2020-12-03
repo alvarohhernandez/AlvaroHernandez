@@ -16,7 +16,6 @@ public class PruebaTiendaOnline {
         String materno;
         String fechaNacimiento;
         Carrito carrito;
-        double totalCompra;
         Articulo sudadera;
 
         user = new Usuario("Alvaro", "Hernandez", "Hernandez", "20/03/1990");
@@ -26,9 +25,8 @@ public class PruebaTiendaOnline {
         fechaNacimiento = user.getFechaNacimiento();
 
         carrito = new Carrito();
-        totalCompra = carrito.getTotal();
 
-        sudadera = new Articulo("Sudadera Adidas", 300, "305307451", "Sudadera azul marca adidas");
+        sudadera = new Articulo("Sudadera Adidas", 300, 305307451, "Sudadera azul marca adidas");
 
         carrito.addArticulo(sudadera);
 
@@ -37,7 +35,6 @@ public class PruebaTiendaOnline {
         System.out.println("El apellido materno es " + materno);
         System.out.println("La fecha de nacimiento es " + fechaNacimiento);
 
-        System.out.println("El total de la compra es " + totalCompra);
         System.out.println("Print Carrito " + carrito);
         System.out.println("Print Sudadera \n " + sudadera);
     }

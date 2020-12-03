@@ -1,6 +1,8 @@
 package icc.tiendaOnline;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 /*
  * Esta clase modela el carrito de compra de una tienda online
@@ -8,30 +10,35 @@ import java.util.ArrayList;
  *
  */
 public class Carrito {
-    private double total;
-    private ArrayList<Articulo> articulos;
+    private Map<Integer, Articulo> articulos;
 
     /*
      * Constructor de la clase Carrito
      */
     public Carrito() {
-        total = 0;
-        articulos = new ArrayList<Articulo>();
+        articulos = new HashMap<Integer, Articulo>();
     }
 
     /*
-     * Método para obtener el total del carrito
-     * @return El total del carrito
+     * Método para obtener el total de la compra del carrito
+     * @return La suma total de los montos
      */
-    public double getTotal() {
-        return total;
+    public void obtieneTotal() {
     }
 
     /*
      * Método para agregar un artículo al carrito
      */
     public void addArticulo(Articulo articulo) {
-        this.articulos.add(articulo);
+        this.articulos.put(articulo.getCodigoBarras(), articulo);
     }
-    
+
+    @Override
+    public String toString() {
+        String resultado = "";
+        for (Map.Entry<String, HashMap> entry : this.articulos.entrySet()) {
+            HashMap value = entry.getValue();
+            resultado += value.toString();
+        }
+    } 
 }
