@@ -36,9 +36,11 @@ public class Carrito {
     @Override
     public String toString() {
         String resultado = "";
-        for (Map.Entry<String, HashMap> entry : this.articulos.entrySet()) {
-            HashMap value = entry.getValue();
+        for (Map.Entry<Integer, Articulo> entry : this.articulos.entrySet()) {
+            Articulo value = entry.getValue();
             resultado += value.toString();
         }
+
+        return resultado;
     } 
 }
