@@ -1,10 +1,6 @@
-Diseñen un método que se llame detalles() y que se encargue de mandar a salida estándar todos los atributos del objeto.
+2.- ¿Qué se imprime? Muetre la sálida y explique qué es lo que se manda a la salida estándar.
 
-Modifique en el resto del código aquellas partes donde sustituya las líneas de 1 por la invocación a este método.
+    ➜  AlvaroHernandez git:(master) ✗ java -cp build Main                                                        
+    Cuenta: bancosimple.Cuenta@2a139a55
 
-¿Cuál de las dos fué mejor solución y por qué?
-   La invocación del método detalles es una mejor solución, puesto que nos permite conocer el estado total del objeto sin tener que invocar cada uno de los metodos para los atributos en específico, además de que nos ahorra tiempo y lineas de código. Si tuvieramos que conocer en repetidas ocasiones el detalle de un objeto con una cantidad grande de atributos, se volvería una tarea tediosa tener que invocar los metodos de acceso a los atributos por separado.
-
-Escriba en resumen un aprendizaje de esta actividad.
-  Como lo hemos visto en clase, tener un método de acceso a los detalles de un objeto es de suma utilidad, optimizamos tiempo y esfuerzo cuando necesitamos consultar los detalles del objeto de manera frecuente. Si consultamos los atributos por separado, tenemos que nuestras consultas para obtener los detalles del objeto se vuelven exponenciales, mientras que hacer uso de un metodo detalles, sólo es lineal.
-Adicionalmente, nos permite tener un código mucho más limpio, legible y mantenible.
+    System.out.println, hace uso del método toString de la clase Object, el cual devuelve una cadena formada por el nombre de la clase del cual el objeto es una instancia, seguida del caracter `@', y un hexadecimal que representa el hash code de el objecto.
