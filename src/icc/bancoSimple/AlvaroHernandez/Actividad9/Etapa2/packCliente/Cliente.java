@@ -1,4 +1,4 @@
-package bancosimple;
+package packCliente;
 
 /**
  * Esta clase modela el cliente de un banco

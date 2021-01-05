@@ -1,4 +1,4 @@
-package bancosimple;
+package packCuenta;
 
 /**
  * Esta clase modela la cuenta bancaria de un banco

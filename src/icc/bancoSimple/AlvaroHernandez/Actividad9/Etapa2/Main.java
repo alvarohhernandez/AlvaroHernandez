@@ -1,5 +1,5 @@
-import bancosimple.Cuenta;
-import bancosimple.Cliente;
+import packCuenta.Cuenta;
+import packCliente.Cliente;
 
 /**
  * Esta clase modela las pruebas para el proyecto bancoSimple
