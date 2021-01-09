@@ -1,4 +1,4 @@
-package packCuenta;
+package banco;
 
 /**
  * Esta clase modela la cuenta bancaria de un banco
@@ -38,7 +38,7 @@ public class Cuenta {
      * Método que retira saldo de la cuenta bancaria
      * @param monto El parámetro monto define la cantidad a retirar de la cuenta bancaria
      */
-    public void retirarSaldo(double monto) {
+    public void retira(double monto) {
         this.saldo -= monto;
     }
 
@@ -46,7 +46,7 @@ public class Cuenta {
      * Método que deposita saldo a la cuenta bancaria
      * @param monto El parámetro monto defina la cantidad a depositar en la cuenta bancaria
      */
-    public void depositarSaldo(double monto) {
+    public void deposita(double monto) {
         this.saldo += monto;
     }
 
