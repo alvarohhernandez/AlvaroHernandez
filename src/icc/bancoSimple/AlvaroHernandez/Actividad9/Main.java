@@ -8,15 +8,17 @@ import banco.Cliente;
 public class Main {
     public static void main(String[] args) {
         Cuenta nuevaCuenta;
-        Cliente nuevoCliente;
+        Cliente cliente1;
+        Cliente cliente2;
 
         nuevaCuenta = new Cuenta(305307451, 30000);
-        nuevoCliente = new Cliente("Alvaro", "Hernández", "Hernández", 30, "draco_90@ciencias.unam.mx");
+        cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1991", "draco_90@ciencias.unam.mx", nuevaCuenta);
+        cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", 305307451, 30000);
         
         nuevaCuenta.retira(10000);
         nuevaCuenta.deposita(5000);
 
-        System.out.println("Cuenta: " + nuevaCuenta);
-        System.out.println("Cliente: " + nuevoCliente);
+        System.out.println("Cliente1: " + cliente1);
+        System.out.println("Cliente2: " + cliente2);
     }
 }
