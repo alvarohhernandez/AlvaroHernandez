@@ -16,7 +16,8 @@ public class Cliente {
     private String materno;
     private Date fechaNacimiento;
     private String email;
-    private Cuenta cuenta;
+    private Cuenta cuentas[];
+    private int contador;
 
     /**
      * Constructor para el cliente
@@ -28,6 +29,7 @@ public class Cliente {
      * @param cuenta El parámetro cuenta define la cuenta bancaria del cliente
      */
     public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, Cuenta cuenta) {
+        this.contador = 0;
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;
@@ -37,7 +39,9 @@ public class Cliente {
           System.out.println("Exception" + e);
         }
         this.email = email;
-        this.cuenta = cuenta;
+        this.cuentas = new Cuenta[5];
+        this.cuentas[this.contador] = cuenta;
+        this.contador++;
     }
 
     /**
@@ -51,6 +55,7 @@ public class Cliente {
      * @param saldo El pararámetro saldo define el saldo para la cuenta bancaria del cliente
      */
     public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, double saldo) {
+        this.contador = 0;
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;
@@ -60,7 +65,9 @@ public class Cliente {
           System.out.println("Exception" + e);
         }
         this.email = email;
-        this.cuenta = new Cuenta(numero, saldo);
+        this.cuentas = new Cuenta[5];
+        this.cuentas[this.contador] = new Cuenta(numero, saldo);
+        this.contador++;
     }
 
     /**
@@ -128,8 +135,35 @@ public class Cliente {
      * Método que devuelve la cuenta bancaria del cliente
      * @return La cuenta bancaria del cliente
      */
-    public Cuenta getCuenta() {
-        return this.cuenta;
+    public String getCuentas() {
+        String cuentas = "";
+        for (int i=0; i < this.cuentas.length; i++) {
+            if (this.cuentas[i] != null) {
+                cuentas = cuentas + this.cuentas[i];
+            }
+        }
+
+        return cuentas;
+    }
+
+    /**
+     * Método que devuelve la i-esima cuenta bancaria del cliente
+     * @param i El parámetro i representa la posición correspondiente a la cuenta bancaria que deseamos obtener
+     * @return La i-esima cuenta bancaria del cliente
+     */
+    public Cuenta getCuenta(int i) {
+        return this.cuentas[i];
+    }
+
+    /**
+     * Método para agregar una cuenta bancaria al cliente
+     * @param noCuenta El parámetro noCuenta hace referencia al número de cuenta de la cuenta bancaria
+     * @param saldo El parámetro saldo hace referencia al slado de la cuenta bancaria
+     * @return void
+     */
+    public void agregarCuenta(int noCuenta, double saldo) {
+        this.cuentas[this.contador] = new Cuenta(noCuenta, saldo);
+        this.contador++;
     }
 
     /**
@@ -142,13 +176,13 @@ public class Cliente {
                         + "\n   La fecha de nacimiento del cliente es: %2$2s"
                         + "\n   La edad del cliente es: %3$2s años"
                         + "\n   El email del cliente es: %4$2s"
-                        + "\n   Cuenta:"
+                        + "\n   Cuentas:"
                         + " %5$2s",
                         this.getNombreCompleto(),
                         this.getFechaNacimiento(),
                         this.getEdad(),
                         this.email,
-                        this.cuenta);
+                        this.getCuentas());
 
         return cliente;
     }

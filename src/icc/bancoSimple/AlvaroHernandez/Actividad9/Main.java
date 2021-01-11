@@ -17,8 +17,11 @@ public class Main {
         
         nuevaCuenta.retira(10000);
         nuevaCuenta.deposita(5000);
+        cliente2.agregarCuenta(305307452, 15000);
+        cliente2.agregarCuenta(305307453, 25000);
 
         System.out.println("Cliente1: " + cliente1);
         System.out.println("Cliente2: " + cliente2);
+        System.out.println("Cliente2 - Cuenta 2: " + cliente2.getCuenta(1));
     }
 }
