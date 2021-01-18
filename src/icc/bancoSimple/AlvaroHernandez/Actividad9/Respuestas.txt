@@ -1,6 +1,0 @@
-2.- ¿Qué se imprime? Muetre la sálida y explique qué es lo que se manda a la salida estándar.
-
-    ➜  AlvaroHernandez git:(master) ✗ java -cp build Main                                                        
-    Cuenta: bancosimple.Cuenta@2a139a55
-
-    System.out.println, hace uso del método toString de la clase Object, el cual devuelve una cadena formada por el nombre de la clase del cual el objeto es una instancia, seguida del caracter `@', y un hexadecimal que representa el hash code de el objecto.

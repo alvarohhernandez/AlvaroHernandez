@@ -53,8 +53,9 @@ public class Cliente {
      * @param email El parámetro email define el correo electrónico del cliente
      * @param numero El parámetro numero define el numero de cuenta para la cuenta bancaria del cliente
      * @param saldo El pararámetro saldo define el saldo para la cuenta bancaria del cliente
+     * @param tipo El parámetro tipo define el tipo de cuenta bancaria (debito|credito)
      */
-    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, double saldo) {
+    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, String tipo) {
         this.contador = 0;
         this.nombre = nombre;
         this.paterno = paterno;
@@ -66,7 +67,11 @@ public class Cliente {
         }
         this.email = email;
         this.cuentas = new Cuenta[5];
-        this.cuentas[this.contador] = new Cuenta(numero, saldo);
+        if (tipo == "debito") {
+            this.cuentas[this.contador] = new CuentaDebito(numero);
+        } else if (tipo == "credito" ) {
+            this.cuentas[this.contador] = new CuentaCredito(numero);
+        }
         this.contador++;
     }
 
@@ -98,7 +103,7 @@ public class Cliente {
      * Método que devuelve el nombre completo del cliente
      * @return El nombre completo del cliente
      */
-    public String getNombreCompleto() {
+    public String printNombreCompleto() {
         return String.format("%1$2s %2$2s %3$2s", this.nombre, this.paterno, this.materno);
     }
 
@@ -114,7 +119,7 @@ public class Cliente {
      * Método que devuelve la edad del cliente
      * @return La edad del cliente
      */
-    public int getEdad() {
+    public int calculaEdad() {
         LocalDate fechaNacimiento = this.fechaNacimiento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         LocalDate today = LocalDate.now();
         Period edad = Period.between(fechaNacimiento, today);
@@ -132,10 +137,10 @@ public class Cliente {
     }
 
     /**
-     * Método que devuelve la cuenta bancaria del cliente
-     * @return La cuenta bancaria del cliente
+     * Método que imprime los detalles de las cuentas bancarias del cliente
+     * @return Los detalles de las cuentas bancaria del cliente
      */
-    public String getCuentas() {
+    public String printCuentas() {
         String cuentas = "";
         for (int i=0; i < this.cuentas.length; i++) {
             if (this.cuentas[i] != null) {
@@ -151,18 +156,17 @@ public class Cliente {
      * @param i El parámetro i representa la posición correspondiente a la cuenta bancaria que deseamos obtener
      * @return La i-esima cuenta bancaria del cliente
      */
-    public Cuenta getCuenta(int i) {
+    public Cuenta printCuenta(int i) {
         return this.cuentas[i];
     }
 
     /**
      * Método para agregar una cuenta bancaria al cliente
-     * @param noCuenta El parámetro noCuenta hace referencia al número de cuenta de la cuenta bancaria
-     * @param saldo El parámetro saldo hace referencia al slado de la cuenta bancaria
+     * @param cuenta El parámetro cuenta hace referencia al objeto cuenta de la cuenta bancaria
      * @return void
      */
-    public void agregarCuenta(int noCuenta, double saldo) {
-        this.cuentas[this.contador] = new Cuenta(noCuenta, saldo);
+    public void agregarCuenta(Cuenta cuenta) {
+        this.cuentas[this.contador] = cuenta;
         this.contador++;
     }
 
@@ -178,11 +182,11 @@ public class Cliente {
                         + "\n   El email del cliente es: %4$2s"
                         + "\n   Cuentas:"
                         + " %5$2s",
-                        this.getNombreCompleto(),
+                        this.printNombreCompleto(),
                         this.getFechaNacimiento(),
-                        this.getEdad(),
+                        this.calculaEdad(),
                         this.email,
-                        this.getCuentas());
+                        this.printCuentas());
 
         return cliente;
     }

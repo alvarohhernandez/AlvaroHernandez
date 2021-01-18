@@ -6,7 +6,16 @@ package banco;
  */
 public class Cuenta {
     private int numero;
-    private double saldo;
+    protected double saldo;
+
+    /**
+     * Constructor para la cuenta bancaria
+     * @param numero El parámetro numero define el numero de cuenta de la cuenta bancaria
+     */
+    public Cuenta(int numero) {
+        this.numero = numero;
+        this.saldo = 0;
+    }
 
     /**
      * Constructor para la cuenta bancaria
@@ -38,16 +47,26 @@ public class Cuenta {
      * Método que retira saldo de la cuenta bancaria
      * @param monto El parámetro monto define la cantidad a retirar de la cuenta bancaria
      */
-    public void retira(double monto) {
-        this.saldo -= monto;
+    public void retirar(double monto) throws Exception {
+        if (monto <= 0) {
+            throw new Exception("El monto a retirar debe ser mayor a $ 0.00");
+        } else if (monto > this.saldo) {
+            throw new Exception("Fondos insuficientes. El saldo actual de la cuenta es $ " + this.saldo);
+        } else {
+            this.saldo -= monto;
+        }
     }
 
     /**
      * Método que deposita saldo a la cuenta bancaria
      * @param monto El parámetro monto defina la cantidad a depositar en la cuenta bancaria
      */
-    public void deposita(double monto) {
-        this.saldo += monto;
+    public void depositar(double monto) throws Exception {
+        if (monto <= 0) {
+            throw new Exception("El monto a depositar debe ser mayor a $ 0.00");
+        } else  {
+            this.saldo += monto;
+        }
     }
 
     /**
