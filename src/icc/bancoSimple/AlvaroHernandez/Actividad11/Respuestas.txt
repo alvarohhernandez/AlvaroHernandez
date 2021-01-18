@@ -1,2 +1,3 @@
-8. ¿Por qué es necesario "contador"? ¿En dónde se inicializa? ¿Con qué valor?
-   Es necesario un contador, porque estamos trabajando con un arreglo de cuentas, este contador debe inicializarse en el constructor, y se inicializa con el valor 0.
+¿estos cambios afectan al toString()? ¿cómo se modifica?
+  Los cambios al toString se sobreescibren para cada clase hija, haciendo uso de super para usar
+  el método toString() de la clase padre.

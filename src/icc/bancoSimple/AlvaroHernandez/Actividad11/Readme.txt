@@ -15,7 +15,7 @@ Pre-requisitos
 --------------
 
 - Java 1.8 JRE – 32bit or 64bit for
-- Windows 7/8
+- Windows 7/8/10
 - Linux
 - Mac OsX
 
@@ -33,19 +33,6 @@ A través de git, se puede obtener la versión actualizada ejecutando el siguien
 - Paquete
 A través del paquete comprimido, se debe descomprimir en cualquier ruta del sistema.
 
-Estructura del Proyecto
------------------------
-
-Durante el desarrollo del proyecto, se realizarán diversas actividades, las cuales consistirán de diversas etapas,
-la estructura principal es la siguiente
-
-/AlvaroHernandez - Carpeta principal del proyecto
-/AlvaroHernandez/Actividad(n) - Carpeta de actividad, donde n es el número de actividad actual
-/AlvaroHernandez/Actividad(n)/Etapa(n) - Carpeta de Etapa, dond n es el númeto de etapa de la actividad actual
-/AlvaroHernandez/Actividad(n)/Etapa(n)/banco - Carpeta del paquete banco, donde se encuentran las clases Cliente y
-                                               Cuenta
-/AlvaroHernadnez/Actividad(n)/Etapa(n)/Main.java - Clase Main, con los principales test de las clases
-
 Deployment
 ----------
 
@@ -54,11 +41,24 @@ directorio principal /AlvaroHernandez y ejecutar la siguiente instrucción.
 
     javac Main.java banco/*.java
 
-Esto nos generará las clases principales Main.class, banco/Cuenta.class y banco/Cliente.class
+Esto nos generará las clases principales Main.class, banco/Cuenta.class, banco/CuentaDebito.class,
+banco/CuentaCredito.class y banco/Cliente.class
 
 Para correr las pruebas, se deberá ejecutar la siguiente intrucción desde la carpeta principal del proyecto.
 
     java Main
+
+Estructura del Proyecto
+-----------------------
+
+Durante el desarrollo del proyecto, se realizarán diversas actividades, las cuales consistirán de diversas etapas,
+la estructura principal es la siguiente
+
+/AlvaroHernandez - Carpeta principal del proyecto
+/AlvaroHernandez/Actividad(n) - Carpeta de actividad, donde n es el número de actividad actual
+/AlvaroHernandez/Actividad(n)/banco - Carpeta del paquete banco, donde se encuentran las clases Cliente,
+                                      Cuenta, CuentaDebito y CuentaCredito
+/AlvaroHernadnez/Actividad(n)/Main.java - Clase Main, con los principales test de las clases
 
 --------------------------
 Readme aún en construcción
