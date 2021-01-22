@@ -40,46 +40,49 @@ public class UsoBanco {
         return "Vuelve Pronto";
     }
 
-    public static Cliente creaCliente(Cuenta cuenta) {
+    public static Cliente muestraFormulario() {
+        int tipo;
         String nombre;
         String materno;
         String paterno;
         String email;
         String fechaNacimiento;
-        Scanner scan = new Scanner(System.in);
+        Scanner scanInt = new Scanner(System.in);
+        Scanner scanText = new Scanner(System.in);
         Cliente cliente;
-
-        System.out.println("Ingresa Apellido Paterno");
-        paterno = scan.nextLine();
-        System.out.println("Ingresa Apellido Materno");
-        materno = scan.nextLine();
-        System.out.println("Ingresa Nombre(s)");
-        nombre = scan.nextLine();
-        System.out.println("Ingresa Correo Electrónico");
-        email = scan.nextLine();
-        System.out.println("Ingresa Fecha de Nacimiento (dd/mm/aaaa)");
-        fechaNacimiento = scan.nextLine();
-
-        return cliente;
-    }
-
-    public static Cuenta creaCuenta() {
-        int tipo;
         Cuenta cuenta;
-        Scanner scan = new Scanner(System.in);
 
         System.out.println("Selecciona el tipo de cuenta que deseas \n" +
                            "1.- Débito \n" +
                            "2.- Crédito \n");
-        tipo = scan.nextInt();
+        tipo = scanInt.nextInt();
 
-        return cuenta;
+        if (tipo == 1) {
+            cuenta = new CuentaDebito(305307451);
+        } else {
+            cuenta = new CuentaCredito(305307451);
+        }
+
+        System.out.println("Ingresa Apellido Paterno");
+        paterno = scanText.nextLine();
+        System.out.println("Ingresa Apellido Materno");
+        materno = scanText.nextLine();
+        System.out.println("Ingresa Nombre(s)");
+        nombre = scanText.nextLine();
+        System.out.println("Ingresa Correo Electrónico");
+        email = scanText.nextLine();
+        System.out.println("Ingresa Fecha de Nacimiento (dd-mm-aaaa)");
+        fechaNacimiento = scanText.nextLine();
+
+        cliente = new Cliente(nombre, paterno, materno, fechaNacimiento, email, cuenta);
+
+        return cliente;
     }
 
     public static void main(String[] args) {
         int opcion;
         Scanner scan = new Scanner(System.in);
-        Cuenta cuenta;
+        Cliente cliente;
 
         System.out.println(UsoBanco.muestraBienvenida());
         System.out.println(UsoBanco.muestraMenuPrincipal());
@@ -90,9 +93,8 @@ public class UsoBanco {
             case 1:
                 break;
             case 2:
-                cuenta = UsoBanco.creaCuenta();
-                cliente = UsoBanco.creaCliente(cuenta);
-                banco.registraCliente(cliente);
+                cliente = UsoBanco.muestraFormulario();
+                System.out.println(cliente);
                 break;
             default:
                 System.out.println(UsoBanco.muestraDespedida());
