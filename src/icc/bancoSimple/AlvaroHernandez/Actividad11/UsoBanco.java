@@ -14,33 +14,33 @@ public class UsoBanco {
     private String password;
     private int tipoCuenta;
     private boolean sesion;
-    private String bienvenida = "Bienvenido \n" +
+    private static String bienvenida = "Bienvenido \n" +
                                 "El siguiente sistema bancario te permite \n" +
                                 "administrar tu cuenta bancaria \n";
     /**
      * Método que devuelve la representación en cadena del mensaje de bienvenida
      * @return String
      */
-    public String muestraBienvenida() {
-        return this.bienvenida;
+    public static String muestraBienvenida() {
+        return UsoBanco.bienvenida;
     }
 
     /**
      * Método que devuelve la representación en cadena del menú principal
      * @return String
      */
-    public String muestraMenuPrincipal() {
+    public static String muestraMenuPrincipal() {
         return "Selecciona una opción: \n" +
                "1.- Login \n" +
                "2.- Registrar \n" +
                "3.- Salir \n";
     }
 
-    public String muestraDespedida() {
+    public static String muestraDespedida() {
         return "Vuelve Pronto";
     }
 
-    public void creaCliente(Cuenta cuenta) {
+    public static Cliente creaCliente(Cuenta cuenta) {
         String nombre;
         String materno;
         String paterno;
@@ -59,16 +59,21 @@ public class UsoBanco {
         email = scan.nextLine();
         System.out.println("Ingresa Fecha de Nacimiento (dd/mm/aaaa)");
         fechaNacimiento = scan.nextLine();
+
+        return cliente;
     }
 
-    public void creaCuenta() {
+    public static Cuenta creaCuenta() {
         int tipo;
+        Cuenta cuenta;
         Scanner scan = new Scanner(System.in);
 
         System.out.println("Selecciona el tipo de cuenta que deseas \n" +
                            "1.- Débito \n" +
                            "2.- Crédito \n");
         tipo = scan.nextInt();
+
+        return cuenta;
     }
 
     public static void main(String[] args) {
@@ -76,9 +81,8 @@ public class UsoBanco {
         Scanner scan = new Scanner(System.in);
         Cuenta cuenta;
 
-        UsoBanco usoBanco = new UsoBanco();
-        System.out.println(usoBanco.muestraBienvenida());
-        System.out.println(usoBanco.muestraMenuPrincipal());
+        System.out.println(UsoBanco.muestraBienvenida());
+        System.out.println(UsoBanco.muestraMenuPrincipal());
 
         opcion = scan.nextInt();
 
@@ -86,11 +90,12 @@ public class UsoBanco {
             case 1:
                 break;
             case 2:
-                usoBanco.creaCuenta();
-                //usoBanco.creaCliente();
+                cuenta = UsoBanco.creaCuenta();
+                cliente = UsoBanco.creaCliente(cuenta);
+                banco.registraCliente(cliente);
                 break;
             default:
-                System.out.println(usoBanco.muestraDespedida());
+                System.out.println(UsoBanco.muestraDespedida());
         }
     }
 }
