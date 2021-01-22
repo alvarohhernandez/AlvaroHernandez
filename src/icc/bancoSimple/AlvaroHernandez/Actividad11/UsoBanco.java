@@ -40,15 +40,41 @@ public class UsoBanco {
         return "Vuelve Pronto";
     }
 
-    public static void main(String[] args) {
-        int opcion;
+    public void creaCliente(Cuenta cuenta) {
         String nombre;
         String materno;
         String paterno;
         String email;
         String fechaNacimiento;
         Scanner scan = new Scanner(System.in);
-        Scanner scan2 = new Scanner(System.in);
+        Cliente cliente;
+
+        System.out.println("Ingresa Apellido Paterno");
+        paterno = scan.nextLine();
+        System.out.println("Ingresa Apellido Materno");
+        materno = scan.nextLine();
+        System.out.println("Ingresa Nombre(s)");
+        nombre = scan.nextLine();
+        System.out.println("Ingresa Correo Electrónico");
+        email = scan.nextLine();
+        System.out.println("Ingresa Fecha de Nacimiento (dd/mm/aaaa)");
+        fechaNacimiento = scan.nextLine();
+    }
+
+    public void creaCuenta() {
+        int tipo;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Selecciona el tipo de cuenta que deseas \n" +
+                           "1.- Débito \n" +
+                           "2.- Crédito \n");
+        tipo = scan.nextInt();
+    }
+
+    public static void main(String[] args) {
+        int opcion;
+        Scanner scan = new Scanner(System.in);
+        Cuenta cuenta;
 
         UsoBanco usoBanco = new UsoBanco();
         System.out.println(usoBanco.muestraBienvenida());
@@ -60,12 +86,8 @@ public class UsoBanco {
             case 1:
                 break;
             case 2:
-                System.out.println("Ingresa Apellido Paterno");
-                paterno = scan2.nextLine();
-                System.out.println("Ingresa Apellido Materno");
-                materno = scan2.nextLine();
-                System.out.println("Ingresa Nombre(s)");
-                nombre = scan2.nextLine();
+                usoBanco.creaCuenta();
+                //usoBanco.creaCliente();
                 break;
             default:
                 System.out.println(usoBanco.muestraDespedida());
