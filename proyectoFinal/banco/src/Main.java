@@ -2,6 +2,7 @@ import banco.Cuenta;
 import banco.CuentaDebito;
 import banco.CuentaCredito;
 import banco.Cliente;
+import banco.Banco;
 
 /**
  * Esta clase modela las pruebas para el proyecto bancoSimple
@@ -9,6 +10,7 @@ import banco.Cliente;
  */
 public class Main {
     public static void main(String[] args) {
+        Banco banco = new Banco();
         Cliente cliente1;
         Cliente cliente2;
         Cuenta cuentaDebito;
@@ -26,6 +28,8 @@ public class Main {
         cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", 305307452, "debito");
         cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", cuentaCredito);
 
-        System.out.println(cliente1.equals(cliente2));
+        banco.agregarCliente(cliente1);
+        banco.agregarCliente(cliente2);
+        System.out.println(banco.calcularFondosDelBanco());
     }
 }

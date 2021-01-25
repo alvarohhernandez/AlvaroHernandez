@@ -16,7 +16,7 @@ public class Cliente {
     private String materno;
     private Date fechaNacimiento;
     private String email;
-    private Cuenta cuentas[];
+    protected Cuenta cuentas[];
     private int contador;
 
     /**
