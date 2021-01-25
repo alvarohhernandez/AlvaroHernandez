@@ -46,6 +46,7 @@ public class Cuenta {
     /**
      * Método que retira saldo de la cuenta bancaria
      * @param monto El parámetro monto define la cantidad a retirar de la cuenta bancaria
+     * @throws SaldoException Validaciones del monto
      */
     public void retirar(double monto) throws Exception {
         if (monto <= 0) {

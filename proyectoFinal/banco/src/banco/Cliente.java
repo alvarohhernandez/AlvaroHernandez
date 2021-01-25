@@ -24,7 +24,7 @@ public class Cliente {
      * @param nombre El parámetro nombre define el nombre del cliente
      * @param paterno El parámetro paterno define el apellido paterno del cliente
      * @param materno El parámetro materno define el apellido materno del cliente
-     * @param fechaNacimimento El parámetro fechaNacimiento define la fecha de nacimiento del cliente
+     * @param fechaNacimiento El parámetro fechaNacimiento define la fecha de nacimiento del cliente
      * @param email El parámetro email define el correo electrónico del cliente
      * @param cuenta El parámetro cuenta define la cuenta bancaria del cliente
      */
@@ -49,10 +49,9 @@ public class Cliente {
      * @param nombre El parámetro nombre define el nombre del cliente
      * @param paterno El parámetro paterno define el apellido paterno del cliente
      * @param materno El parámetro materno define el apellido materno del cliente
-     * @param fechaNacimimento El parámetro fechaNacimiento define la fecha de nacimiento del cliente
+     * @param fechaNacimiento El parámetro fechaNacimiento define la fecha de nacimiento del cliente
      * @param email El parámetro email define el correo electrónico del cliente
      * @param numero El parámetro numero define el numero de cuenta para la cuenta bancaria del cliente
-     * @param saldo El pararámetro saldo define el saldo para la cuenta bancaria del cliente
      * @param tipo El parámetro tipo define el tipo de cuenta bancaria (debito|credito)
      */
     public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, String tipo) {
@@ -163,7 +162,6 @@ public class Cliente {
     /**
      * Método para agregar una cuenta bancaria al cliente
      * @param cuenta El parámetro cuenta hace referencia al objeto cuenta de la cuenta bancaria
-     * @return void
      */
     public void agregarCuenta(Cuenta cuenta) {
         this.cuentas[this.contador] = cuenta;
@@ -189,5 +187,27 @@ public class Cliente {
                         this.printCuentas());
 
         return cliente;
+    }
+
+    /**
+     * Método para verificar si un cliente es igual a otro cliente
+     * @param cliente El parámetro cliente hace referencia al objeto de tipo Cliente, contra el cual se desea
+     *                comparar
+     * @return boolean True si los clientes son iguales, false en caso contrario
+     */
+     @Override
+    public boolean equals(Object object) {
+        if (object == this) {
+            return true;
+        }
+        if (object instanceof Cliente) {
+            Cliente cliente = (Cliente) object;
+            return this.nombre == cliente.nombre
+                   && this.paterno == cliente.paterno
+                   && this.materno == cliente.materno
+                   && this.fechaNacimiento.equals(cliente.fechaNacimiento);
+        } else {
+            return false;
+        }
     }
 }
