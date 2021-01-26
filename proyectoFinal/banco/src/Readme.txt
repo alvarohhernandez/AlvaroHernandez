@@ -48,6 +48,11 @@ Para correr las pruebas, se deberá ejecutar la siguiente intrucción desde la c
 
     java Main
 
+Funcionalidades
+---------------
+
+- Se agrega excepción para cuenta nula (No se puede agrega un cliente al banco sin una cuenta bancaria relacionada)
+
 Estructura del Proyecto
 -----------------------
 

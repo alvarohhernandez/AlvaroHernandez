@@ -1,3 +1,0 @@
-¿estos cambios afectan al toString()? ¿cómo se modifica?
-  Los cambios al toString se sobreescibren para cada clase hija, haciendo uso de super para usar
-  el método toString() de la clase padre.

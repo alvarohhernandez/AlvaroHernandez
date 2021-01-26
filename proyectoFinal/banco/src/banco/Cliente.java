@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
 
 /**
  * Esta clase modela el cliente de un banco
@@ -16,7 +17,7 @@ public class Cliente {
     private String materno;
     private Date fechaNacimiento;
     private String email;
-    protected Cuenta cuentas[];
+    protected ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
     private int contador;
 
     /**
@@ -28,7 +29,7 @@ public class Cliente {
      * @param email El parámetro email define el correo electrónico del cliente
      * @param cuenta El parámetro cuenta define la cuenta bancaria del cliente
      */
-    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, Cuenta cuenta) {
+    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email) {
         this.contador = 0;
         this.nombre = nombre;
         this.paterno = paterno;
@@ -39,9 +40,20 @@ public class Cliente {
           System.out.println("Exception" + e);
         }
         this.email = email;
-        this.cuentas = new Cuenta[5];
-        this.cuentas[this.contador] = cuenta;
-        this.contador++;
+    }
+
+    /**
+     * Constructor para el cliente
+     * @param nombre El parámetro nombre define el nombre del cliente
+     * @param paterno El parámetro paterno define el apellido paterno del cliente
+     * @param materno El parámetro materno define el apellido materno del cliente
+     * @param fechaNacimiento El parámetro fechaNacimiento define la fecha de nacimiento del cliente
+     * @param email El parámetro email define el correo electrónico del cliente
+     * @param cuenta El parámetro cuenta define la cuenta bancaria del cliente
+     */
+    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, Cuenta cuenta) {
+        this(nombre, paterno, materno, fechaNacimiento, email);
+        this.agregarCuenta(cuenta);
     }
 
     /**
@@ -55,23 +67,12 @@ public class Cliente {
      * @param tipo El parámetro tipo define el tipo de cuenta bancaria (debito|credito)
      */
     public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, String tipo) {
-        this.contador = 0;
-        this.nombre = nombre;
-        this.paterno = paterno;
-        this.materno = materno;
-        try {
-          this.fechaNacimiento = new SimpleDateFormat("dd-MM-yyyy").parse(fechaNacimiento);
-        } catch (Exception e) {
-          System.out.println("Exception" + e);
-        }
-        this.email = email;
-        this.cuentas = new Cuenta[5];
+        this(nombre, paterno, materno, fechaNacimiento, email);
         if (tipo == "debito") {
-            this.cuentas[this.contador] = new CuentaDebito(numero);
+            this.agregarCuenta(new CuentaDebito(numero));
         } else if (tipo == "credito" ) {
-            this.cuentas[this.contador] = new CuentaCredito(numero);
+            this.agregarCuenta(new CuentaCredito(numero));
         }
-        this.contador++;
     }
 
     /**
@@ -141,10 +142,8 @@ public class Cliente {
      */
     public String printCuentas() {
         String cuentas = "";
-        for (int i=0; i < this.cuentas.length; i++) {
-            if (this.cuentas[i] != null) {
-                cuentas = cuentas + this.cuentas[i];
-            }
+        for (int i=0; i < this.cuentas.size(); i++) {
+            cuentas = cuentas + this.cuentas.get(i);
         }
 
         return cuentas;
@@ -156,7 +155,7 @@ public class Cliente {
      * @return La i-esima cuenta bancaria del cliente
      */
     public Cuenta printCuenta(int i) {
-        return this.cuentas[i];
+        return this.cuentas.get(i);
     }
 
     /**
@@ -164,8 +163,7 @@ public class Cliente {
      * @param cuenta El parámetro cuenta hace referencia al objeto cuenta de la cuenta bancaria
      */
     public void agregarCuenta(Cuenta cuenta) {
-        this.cuentas[this.contador] = cuenta;
-        this.contador++;
+        this.cuentas.add(cuenta);
     }
 
     /**

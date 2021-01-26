@@ -26,10 +26,18 @@ public class Main {
         cuentaCredito2 = new CuentaCredito(305307451);
         cuentaCredito3 = new CuentaCredito(305307456);
         cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", 305307452, "debito");
-        cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", cuentaCredito);
+        cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx");
 
-        banco.agregarCliente(cliente1);
-        banco.agregarCliente(cliente2);
-        System.out.println(banco.calcularFondosDelBanco());
+        try {
+            banco.agregarCliente(cliente1);
+        } catch (Exception e) {
+          System.out.println(e);
+        }
+
+        try {
+            banco.agregarCliente(cliente2);
+        } catch (Exception e) {
+          System.out.println(e);
+        }
     }
 }

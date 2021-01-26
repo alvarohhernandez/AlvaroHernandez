@@ -1,6 +1,7 @@
 package banco;
 
 import java.util.ArrayList;
+import banco.CuentaNulaException;
 
 /**
  * Esta clase modela la entidad Banco
@@ -23,17 +24,24 @@ public class Banco {
      */
     public Banco(Cliente cliente) {
         this();
-        this.agregarCliente(cliente);
+        try {
+            this.agregarCliente(cliente);
+        } catch (Exception e) {
+          System.out.println("Exception" + e);
+        }
     }
 
     /**
      * Método que agrega un cliente a la lista de clientes del banco
      * @param cliente El parámetro cliente define el objeto cliente que será agregado al banco
      */
-    public void agregarCliente(Cliente cliente) {
+    public void agregarCliente(Cliente cliente) throws CuentaNulaException {
         this.clientes.add(cliente);
-        for (int i=0; i < cliente.cuentas.length; i++) {
-            this.agregarCuenta(cliente.cuentas[i]);
+        if (cliente.cuentas.size() == 0) {
+            throw new CuentaNulaException("No se puede agregar un usuario sin una cuenta relacionada");
+        }
+        for (int i=0; i < cliente.cuentas.size(); i++) {
+            this.agregarCuenta(cliente.cuentas.get(i));
         }
     }
     /**
