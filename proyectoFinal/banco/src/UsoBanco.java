@@ -1,3 +1,4 @@
+import banco.Banco;
 import banco.Cuenta;
 import banco.CuentaDebito;
 import banco.CuentaCredito;
@@ -58,9 +59,9 @@ public class UsoBanco {
         tipo = scanInt.nextInt();
 
         if (tipo == 1) {
-            cuenta = new CuentaDebito(305307451);
+            cuenta = new CuentaDebito();
         } else {
-            cuenta = new CuentaCredito(305307451);
+            cuenta = new CuentaCredito();
         }
 
         System.out.println("Ingresa Apellido Paterno");
@@ -80,6 +81,7 @@ public class UsoBanco {
     }
 
     public static void main(String[] args) {
+        Banco banco = new Banco();
         int opcion;
         Scanner scan = new Scanner(System.in);
         Cliente cliente;
@@ -94,7 +96,12 @@ public class UsoBanco {
                 break;
             case 2:
                 cliente = UsoBanco.muestraFormulario();
-                System.out.println(cliente);
+                try {
+                    banco.agregarCliente(cliente);
+                    System.out.println("Usuario Registrado con Exito");
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
                 break;
             default:
                 System.out.println(UsoBanco.muestraDespedida());

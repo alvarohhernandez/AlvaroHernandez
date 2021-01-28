@@ -66,12 +66,12 @@ public class Cliente {
      * @param numero El parámetro numero define el numero de cuenta para la cuenta bancaria del cliente
      * @param tipo El parámetro tipo define el tipo de cuenta bancaria (debito|credito)
      */
-    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, int numero, String tipo) {
+    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, String tipo) {
         this(nombre, paterno, materno, fechaNacimiento, email);
         if (tipo == "debito") {
-            this.agregarCuenta(new CuentaDebito(numero));
+            this.agregarCuenta(new CuentaDebito());
         } else if (tipo == "credito" ) {
-            this.agregarCuenta(new CuentaCredito(numero));
+            this.agregarCuenta(new CuentaCredito());
         }
     }
 

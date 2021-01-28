@@ -20,13 +20,13 @@ public class Main {
         Cuenta cuentaCredito3;
 
         
-        cuentaDebito = new CuentaDebito(305307450, 5000);
-        cuentaCredito = new CuentaCredito(305307451);
-        cuentaDebito2 = new CuentaDebito(305307451, 10000);
-        cuentaCredito2 = new CuentaCredito(305307451);
-        cuentaCredito3 = new CuentaCredito(305307456);
-        cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", 305307452, "debito");
-        cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx");
+        cuentaDebito = new CuentaDebito(5000);
+        cuentaCredito = new CuentaCredito();
+        cuentaDebito2 = new CuentaDebito(10000);
+        cuentaCredito2 = new CuentaCredito();
+        cuentaCredito3 = new CuentaCredito();
+        cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", "debito");
+        cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", cuentaDebito);
 
         try {
             banco.agregarCliente(cliente1);
@@ -36,6 +36,7 @@ public class Main {
 
         try {
             banco.agregarCliente(cliente2);
+            System.out.println(banco);
         } catch (Exception e) {
           System.out.println(e);
         }

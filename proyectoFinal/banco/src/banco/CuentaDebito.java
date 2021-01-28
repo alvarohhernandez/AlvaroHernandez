@@ -9,20 +9,18 @@ public class CuentaDebito extends Cuenta {
 
     /**
      * Constuctor para la cuenta de débito
-     * @param numero El parámetro numero define el número de cuenta de la cuenta bancaria
      */
-    public CuentaDebito(int numero) {
-        super(numero);
+    public CuentaDebito() {
+        super();
         this.limite = 30000;
     }
 
     /**
      * Constuctor para la cuenta de débito
-     * @param numero El parámetro numero define el número de cuenta de la cuenta bancaria
      * @param saldo El parámetro saldo define el saldo inicial de la cuenta bancaria
      */
-    public CuentaDebito(int numero, double saldo) {
-        super(numero, saldo);
+    public CuentaDebito(double saldo) {
+        super(saldo);
         this.limite = 30000;
     }
 
