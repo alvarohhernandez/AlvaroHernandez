@@ -30,11 +30,33 @@ public class UsoBanco {
      * Método que devuelve la representación en cadena del menú principal
      * @return String
      */
-    public static String muestraMenuPrincipal() {
-        return "Selecciona una opción: \n" +
+    public static void muestraMenuPrincipal() {
+        int opcion;
+        Scanner scan = new Scanner(System.in);
+        Cliente cliente;
+        Banco banco = new Banco();
+        System.out.println( "Selecciona una opción: \n" +
                "1.- Login \n" +
                "2.- Registrar \n" +
-               "3.- Salir \n";
+               "3.- Salir \n");
+        opcion = scan.nextInt();
+
+        switch(opcion) {
+            case 1:
+                break;
+            case 2:
+                cliente = UsoBanco.muestraFormulario();
+                try {
+                    banco.agregarCliente(cliente);
+                    System.out.println("Usuario Registrado con Exito");
+                    UsoBanco.muestraMenuPrincipal();
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
+                break;
+            default:
+                System.out.println(UsoBanco.muestraDespedida());
+        }
     }
 
     public static String muestraDespedida() {
@@ -81,30 +103,7 @@ public class UsoBanco {
     }
 
     public static void main(String[] args) {
-        Banco banco = new Banco();
-        int opcion;
-        Scanner scan = new Scanner(System.in);
-        Cliente cliente;
-
         System.out.println(UsoBanco.muestraBienvenida());
-        System.out.println(UsoBanco.muestraMenuPrincipal());
-
-        opcion = scan.nextInt();
-
-        switch(opcion) {
-            case 1:
-                break;
-            case 2:
-                cliente = UsoBanco.muestraFormulario();
-                try {
-                    banco.agregarCliente(cliente);
-                    System.out.println("Usuario Registrado con Exito");
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-                break;
-            default:
-                System.out.println(UsoBanco.muestraDespedida());
-        }
+        UsoBanco.muestraMenuPrincipal();
     }
 }
