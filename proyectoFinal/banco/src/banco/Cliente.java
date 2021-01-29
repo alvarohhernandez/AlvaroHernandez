@@ -10,6 +10,7 @@ import java.util.ArrayList;
 /**
  * Esta clase modela el cliente de un banco
  * @author Alvaro Hernández
+ * @version 1.0.1
  */
 public class Cliente {
     private String nombre;
@@ -18,7 +19,6 @@ public class Cliente {
     private Date fechaNacimiento;
     private String email;
     protected ArrayList<Cuenta> cuentas = new ArrayList<Cuenta>();
-    private int contador;
 
     /**
      * Constructor para el cliente
@@ -30,7 +30,6 @@ public class Cliente {
      * @param cuenta El parámetro cuenta define la cuenta bancaria del cliente
      */
     public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email) {
-        this.contador = 0;
         this.nombre = nombre;
         this.paterno = paterno;
         this.materno = materno;

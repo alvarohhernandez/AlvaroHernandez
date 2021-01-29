@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @version 1.0.0
  */
 public class UsoBanco {
+    public static Banco banco = new Banco();
     private String usuario;
     private String password;
     private int tipoCuenta;
@@ -34,7 +35,6 @@ public class UsoBanco {
         int opcion;
         Scanner scan = new Scanner(System.in);
         Cliente cliente;
-        Banco banco = new Banco();
         System.out.println( "Selecciona una opción: \n" +
                "1.- Login \n" +
                "2.- Registrar \n" +
@@ -43,15 +43,19 @@ public class UsoBanco {
 
         switch(opcion) {
             case 1:
+                UsoBanco.muestraFormularioLogin();
                 break;
             case 2:
-                cliente = UsoBanco.muestraFormulario();
+                cliente = UsoBanco.muestraFormularioRegistro();
                 try {
-                    banco.agregarCliente(cliente);
+                    UsoBanco.banco.agregarCliente(cliente);
                     System.out.println("Usuario Registrado con Exito");
                     UsoBanco.muestraMenuPrincipal();
                 } catch (Exception e) {
+                    System.out.println("Ocurrió un error inesperado");
                     System.out.println(e);
+                    System.out.println("Intenta nuevamente");
+                    UsoBanco.muestraMenuPrincipal();
                 }
                 break;
             default:
@@ -59,11 +63,54 @@ public class UsoBanco {
         }
     }
 
+    /**
+     * Método que devuelve el mensaje de despedida
+     * @return El mensaje de despedida
+     */
     public static String muestraDespedida() {
         return "Vuelve Pronto";
     }
 
-    public static Cliente muestraFormulario() {
+    /**
+     * Método que muestra el formulario de inicio de sesión
+     */
+    public static void muestraFormularioLogin() {
+        Scanner scanText = new Scanner(System.in);
+        String email;
+        String password;
+        Cliente cliente;
+
+        System.out.println("Ingresa tu correo electrónico");
+        email = scanText.nextLine();
+        System.out.println("Ingresa tu contraseña");
+        password = scanText.nextLine();
+
+        cliente = UsoBanco.iniciaSesion(email, password);
+        if (cliente != null) {
+            System.out.println("Bienvenido " + cliente.printNombreCompleto());
+        } else {
+            System.out.println("Usuario no identificado");
+            UsoBanco.muestraMenuPrincipal();
+        }
+    }
+
+    /**
+     * Método para iniciar sesión en el banco
+     * @param email El parámetro email hace referencia al email de usuario que intenta iniciar sesión
+     * @param password El parámetro password hace referencia al password del usuario que intenta iniciar sesión
+     * @return El cliente o null
+     */
+    public static Cliente iniciaSesion(String email, String password) {
+        Cliente cliente = UsoBanco.banco.buscarCliente(email);
+
+        return cliente;
+    }
+
+    /**
+     * Método que muestra el formulario de registro
+     * @return El cliente registrado
+     */
+    public static Cliente muestraFormularioRegistro() {
         int tipo;
         String nombre;
         String materno;

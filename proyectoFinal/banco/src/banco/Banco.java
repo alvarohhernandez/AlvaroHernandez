@@ -6,7 +6,7 @@ import banco.CuentaNulaException;
 /**
  * Esta clase modela la entidad Banco
  * @author Alvaro Hernández
- * @version 1.0.0
+ * @version 1.0.1
  */
 public class Banco {
     private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -79,6 +79,22 @@ public class Banco {
         }
 
         return fondos;
+    }
+
+    /**
+     * Método que busca un cliente en la lista de clientes del banco
+     * @param email El parámetro email hace referencia al email del usuario que deseamos buscar
+     * @return Los datos del cliente o null
+     */
+    public Cliente buscarCliente(String email) {
+        Cliente cliente = null;
+        for(Cliente item : this.clientes) {
+            if (item.getEmail().equals(email)) {
+                cliente = item;
+            }
+        }
+
+        return cliente;
     }
 
     /**
