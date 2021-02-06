@@ -83,7 +83,7 @@ public class Cuenta {
     */
     private int generaNumeroCuenta() {
         int numCuenta = 0;
-        File cuentas = new File("vars/cuentas.txt");
+        File cuentas = new File("../resources/cuentas.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(cuentas));
             String cuenta;
@@ -105,7 +105,7 @@ public class Cuenta {
      * Método para guardar número de cuenta
      */
     private void guardaNumeroCuenta(int numero) {
-        File cuentas = new File("vars/cuentas.txt");
+        File cuentas = new File("../resources/cuentas.txt");
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(cuentas));
             writer.write(Integer.toString(numero));
