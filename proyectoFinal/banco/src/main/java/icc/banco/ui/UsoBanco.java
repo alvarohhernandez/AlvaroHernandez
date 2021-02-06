@@ -4,6 +4,8 @@ import banco.CuentaDebito;
 import banco.CuentaCredito;
 import banco.Cliente;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 /**
  * Esta clase modela la clase de uso para nuestro banco
@@ -149,7 +151,40 @@ public class UsoBanco {
         return cliente;
     }
 
+    public static void cargaBase() {
+        String fileClientes = "../resources/clientes.csv";
+        String fileCuentas = "../resources/cuentas.csv";
+        String row_cliente;
+        String row_cuenta;
+        try {
+            BufferedReader csvClientes = new BufferedReader(new FileReader(fileClientes));
+            BufferedReader csvCuentas = new BufferedReader(new FileReader(fileCuentas));
+            while ((row_cliente = csvClientes.readLine()) != null) {
+                String[] data_cliente = row_cliente.split(",");
+                Cliente cliente = new Cliente(Integer.parseInt(data_cliente[0]), data_cliente[1], data_cliente[2], data_cliente[3], data_cliente[4], data_cliente[5]);
+                while ((row_cuenta = csvCuentas.readLine()) != null) {
+                    String[] data_cuenta = row_cuenta.split(",");
+                    if (Integer.parseInt(data_cuenta[0]) == cliente.getNoCliente()) {
+                        Cuenta cuenta;
+                        if (data_cuenta[2].equals("D")) {
+                            cuenta = new CuentaDebito(Integer.parseInt(data_cuenta[1]), Double.parseDouble(data_cuenta[3])); 
+                        } else {
+                            cuenta = new CuentaCredito(Integer.parseInt(data_cuenta[1]), Double.parseDouble(data_cuenta[3])); 
+                        }
+                        cliente.agregarCuenta(cuenta);
+                    }
+                }
+                UsoBanco.banco.agregarCliente(cliente);
+            }
+            csvClientes.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public static void main(String[] args) {
+        UsoBanco.cargaBase();
+        System.out.println(UsoBanco.banco);
         System.out.println(UsoBanco.muestraBienvenida());
         UsoBanco.muestraMenuPrincipal();
     }

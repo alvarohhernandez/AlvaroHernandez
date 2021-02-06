@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @version 1.0.1
  */
 public class Cliente {
+    private int no_cliente;
     private String nombre;
     private String paterno;
     private String materno;
@@ -65,13 +66,13 @@ public class Cliente {
      * @param numero El parámetro numero define el numero de cuenta para la cuenta bancaria del cliente
      * @param tipo El parámetro tipo define el tipo de cuenta bancaria (debito|credito)
      */
-    public Cliente(String nombre, String paterno, String materno, String fechaNacimiento, String email, String tipo) {
+    public Cliente(int noCliente, String nombre, String paterno, String materno, String fechaNacimiento, String email) {
         this(nombre, paterno, materno, fechaNacimiento, email);
-        if (tipo == "debito") {
-            this.agregarCuenta(new CuentaDebito());
-        } else if (tipo == "credito" ) {
-            this.agregarCuenta(new CuentaCredito());
-        }
+        this.no_cliente = noCliente;
+    }
+
+    public int getNoCliente() {
+        return this.no_cliente;
     }
 
     /**

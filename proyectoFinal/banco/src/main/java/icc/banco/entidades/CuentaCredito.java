@@ -18,6 +18,25 @@ public class CuentaCredito extends Cuenta {
     }
 
     /**
+     * Constructor para la cuenta de crédito
+     * @param numero El parámetro numero define el número de cuenta de la cuenta de crédito
+     */
+    public CuentaCredito(int numero) {
+        super(numero);
+        this.credito = 30000;
+        this.saldo = this.credito;
+    }
+
+    /**
+     * Constructor para la cuenta de crédito
+     * @param numero El parámetro numero define el número de cuenta de la cuenta de crédito
+     */
+    public CuentaCredito(int numero, double saldo) {
+        this(numero);
+        this.saldo = saldo;
+    }
+
+    /**
      * Método que retira saldo de la cuenta de crédito
      * @param monto El parámetro monto define la cantidad a retirar de la cuenta de crédito
      */

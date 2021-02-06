@@ -25,14 +25,7 @@ public class Main {
         cuentaDebito2 = new CuentaDebito(10000);
         cuentaCredito2 = new CuentaCredito();
         cuentaCredito3 = new CuentaCredito();
-        cliente1 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", "debito");
         cliente2 = new Cliente("Alvaro", "Hernández", "Hernández", "20-03-1990", "draco_90@ciencias.unam.mx", cuentaDebito);
-
-        try {
-            banco.agregarCliente(cliente1);
-        } catch (Exception e) {
-          System.out.println(e);
-        }
 
         try {
             banco.agregarCliente(cliente2);

@@ -27,11 +27,29 @@ public class Cuenta {
     }
 
     /**
+     * Construnctor para la cuenta bancaria, se utiliza para el poblado de cuentas desde archivos
+     * @param numeroCta El parámetro numeroCta define el numero de cuenta de la cuenta bancaria
+     */
+    public Cuenta(int numero) {
+        this.numero = numero;
+        this.saldo = 0;
+    }
+
+    /**
      * Constructor para la cuenta bancaria
      * @param saldo El parámetro saldo define el saldo inicial de la cuenta bancaria
      */
     public Cuenta(double saldo) {
         this();
+        this.saldo = saldo;
+    }
+
+    /**
+     * Constructor para la cuenta bancaria
+     * @param saldo El parámetro saldo define el saldo inicial de la cuenta bancaria
+     */
+    public Cuenta(int numero, double saldo) {
+        this(numero);
         this.saldo = saldo;
     }
 
